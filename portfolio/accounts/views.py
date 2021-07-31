@@ -5,12 +5,14 @@ from django.contrib import auth
 
 # 회원가입
 def signup(request):
-    if request.method == 'POST':
-        if request.POST['password'] == request.POST['password2']:
-            user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
-            auth.login(request, user)
+    if request.method == "POST":
+        if request.POST["password"] == request.POST["password2"]:
+            user = User.objects.create_user(
+                username = request.POST["username"],password=request.POST["password"])
+            auth.login(request,user)
             return redirect('/')
-    return render(request, 'signup.html')
+        return render(request,'signup.html')
+    return render(request,'signup.html')
 
 # 로그인
 def login(request):
