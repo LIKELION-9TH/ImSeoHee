@@ -1,0 +1,90 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinglim's Blog</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/blog.css'%}">
+
+</head>
+<body>
+  <div class="top-line">
+    {% if user.is_authenticated %}
+    <a class="top-a" href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
+    <form id="logout" method="POST" action="{% url 'logout' %}">
+        {% csrf_token %} <input type="hidden" />
+    </form>
+    {% else %}
+    <a class="top-a" href="{% url 'login' %}">로그인</a>
+    <a class="top-a" href="{% url 'signup' %}">회원가입</a>
+    {% endif %}
+  </div>
+
+  <br>
+  <div>
+    <h2 id="kinglim" class="display-4"><a class="top-a" href="{% url 'main'%}">Kinglim's Blog</a></h2> <!-- 부트스트랩 class="navbar-brand" 생략-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div>
+          <ul class="navbar-right navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'who'%}">who<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'hobby'%}">hobby<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'place'%}">place<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'music'%}">music<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'photo'%}">photo<span class="sr-only">(current)</span></a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'visit'%}">visit<span class="sr-only">(current)</span></a>
+            </li>
+            {% endif %}
+            <!-- 부트스트랩 제공 드롭다운 박스 생략 -->
+            <!--
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                AboutME
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="hobby.html">hobby</a>
+                <a class="dropdown-item" href="place.html">place</a>
+                <a class="dropdown-item" href="music.html">music</a>
+                <a class="dropdown-item" href="photo.html">photo</a>
+              </div>
+            </li>
+          -->
+          </ul>
+        </div>
+      </nav>
+  </div>
+
+  {% block contents %}
+
+  {% endblock %}
+
+  <address id="footer">
+
+    Copyright &copy; 2021 Kinglim. All rights reserved. <br />
+
+    <i></i><span>전화: </span>02)123-4567
+
+    <i></i><span>깃허브: </span>https://github.com/kinglim00
+
+  </address>
+</body>

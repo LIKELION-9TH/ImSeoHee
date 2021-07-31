@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<!-- 로그인한 사람들이 글을 쓸 수 있는 게시판-->
+<body>
+    <div class="text-center">
+        <h1>Detail</h1>
+        <h5>방명록/안부글 상세보기</h5>
+    </div>
+
+    <br>
+    <hr class="hr-line"/>
+    <div class="text-center">
+        <h3>{{visit.title}}</h3>
+        <p>{{visit.write_date}}</p>
+        <p>{{visit.body}}</p>
+    </div>
+    
+    <div class="text-center">
+        <a href="{% url 'edit' visit.id %}"><button class="btn btn-dark">수정하기</button></a>
+        <a href="{% url 'delete' visit.id %}"><button class="btn btn-dark">삭제하기</button></a>
+    </div>
+</body>
+{% endblock %}

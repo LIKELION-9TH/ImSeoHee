@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<body>
+    <div class="text-center">
+        <h1 class="text-center">Photo</h1>
+        <h5>내가 찍은 사진</h5>
+    </div>
+
+    {% for photo in photos %}
+        <div class="card card-padding">
+            <h5 class="text-center">{{photo.title}}</h5> <br>
+            <div class="img-center">
+                {% if photo.image %}
+                <p>
+                <img class="imgSize" src ="{{ photo.image.url }}" alt="{{photo.image}}"> 
+                </p>
+            {% endif %}
+            </div>
+            <p class="text-center">{{photo.body}}</p>
+        </div>
+    {% endfor %}
+</body>
+{% endblock %}

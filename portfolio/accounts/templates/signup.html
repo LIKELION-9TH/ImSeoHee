@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<body>
+    <div class="text-center">
+        <h1 class="text-center">Sign Up</h1>
+    </div>
+    <div class="text-center">
+        <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            username<br><input type="text" name="username"><br>
+            password<br><input type="text" name="password"><br>
+            confirm<br><input type="text" name="password2">
+            <br><br>
+            <input type="submit" value="회원가입">
+        </form>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<!-- 로그인한 사람들이 글을 쓸 수 있는 게시판-->
+<body>
+    <div class="text-center">
+        <h1>Visit</h1>
+        <h5>방명록/안부글</h5>
+        <a href="{% url 'new' %}"><button class="btn btn-dark">글쓰기</button></a>
+    </div>
+
+    <div class="text-center">
+        {% for visit in visits %}
+            <div class="card card-padding">
+                <h4>{{visit.title}}</h4>
+                {{visit.write_date}}
+                <a class="top-a" href="{% url 'visit_detail' visit.id %}">상세보기</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+{% endblock %}

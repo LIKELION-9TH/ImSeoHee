@@ -1,0 +1,36 @@
+#footer {
+	padding: 20px 0 15px;
+	margin-top: 70px;
+	background-color: #363a3f;
+	font-size: 0.9em;
+	text-align: center;
+	font-style: normal;
+	color: #fff;
+	clear: both;
+}
+
+#kinglim {
+    padding: 20px;
+    text-align: center;
+    color: #525864;
+}
+
+#top-ul { 
+    list-style: none;
+    
+}
+
+#top-ul li {
+    float: left;
+    padding-right: 10px;
+    font-size: 14px;
+}
+
+.top-a:link { 
+    color: #525864; text-decoration: none;
+}
+
+.top-a:visited {
+    color: #525864; text-decoration: none;
+}
+

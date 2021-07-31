@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<body>
+    <div class="text-center">
+        <h1>Hobby</h1>
+        <h5>취미</h5>
+    </div>
+    {% for hobby in hobbys %}
+        <div class="card card-padding">
+            <h5 class="text-center">{{hobby.title}}</h5> <br>
+            {% if hobby.image %}
+                <p><img class="imgSize" src ="{{ hobby.image.url }}" alt="{{hobby.image}}"></p>
+            {% endif %}
+            <p class="text-center">{{hobby.body}}</p>
+        </div>
+    {% endfor %}
+</body>
+{% endblock %}

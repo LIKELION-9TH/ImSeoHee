@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<body>
+    <div class="text-center">
+        <h1 class="text-center">Place</h1>
+        <h5>좋아하는 장소</h5>
+    </div>
+
+    {% for place in places %}
+        <div class="card card-padding">
+            <h5 class="text-center">{{place.title}}</h5> <br>
+            <div class="img-center">
+                {% if place.image %}
+                <p>
+                <img class="imgSize" src ="{{ place.image.url }}" alt="{{place.image}}"> 
+                </p>
+            {% endif %}
+            </div>
+            <h6 class="text-center intro-b">{{place.address}}</h5>
+            <p class="text-center">{{place.body}}</p>
+        </div>
+    {% endfor %}
+</body>
+{% endblock %}

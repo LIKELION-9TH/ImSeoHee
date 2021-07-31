@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<!-- Music 모델 사용시 유튜브 재생 오류 발생-->
+<!--
+<body>
+    <div class="text-center">
+        <h1 class="text-center">Music</h1>
+        <h5>좋아하는 음악</h5>
+    </div>
+    <div class="content container">
+        <div class="col-md-12">
+        {% for music in musics %}
+            <h4>{{ music.title }}</h4>
+            {{music.singer}}
+        {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-md-16">
+                <div id="player"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {videoId: '{{ music.music_key }}'});
+    }
+</script>
+-->
+{% load embed_video_tags %} 
+<body>
+    <div class="text-center">
+        <h1 class="text-center">Music</h1>
+        <h5>좋아하는 노래</h5>
+    </div>
+    <div class="text-center">
+        {% for post in posts %} 
+        <div class="card card-padding"> 
+            <h4>{{ post.title }}</h4> 
+            <div> 
+                {% video post.video as youtube %}
+                <iframe class="embed-responsive-item" src="{{ youtube.url }}" frameborder="0" allowfullscreen></iframe> 
+                {% endvideo %} 
+            </div> 
+            <p>{{ post.singer }}</p> 
+        </div> 
+        <!-- lyrics 상세 페이지 오류: 가사 페이지 추가하기 -->
+        {% endfor %}
+    </div>
+</body>
+{% endblock %}

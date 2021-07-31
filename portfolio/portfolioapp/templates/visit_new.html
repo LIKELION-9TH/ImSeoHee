@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<div class="text-center">
+    <h1>Write</h1>
+    <h5>방명록/안부글 쓰기</h5>
+</div>
+
+<div class="text-center">
+    <form action="{%url 'create' %}" method="POST">
+        {%csrf_token%}
+        <p>글 제목<br> <input type="text" name="title"></p>
+        <!--비밀번호 맞아야 수정가능 하도록 만들기-->
+        <!--<p>글 비밀번호<br> <input type="password" name="password"></p>-->
+        내용<br> <textarea name="body" id="" cols="70" rows="20"></textarea><br>
+        <br> <button class="btn btn-dark" type="submit">등록</button>
+    </form>
+</div>
+
+{% endblock %}
